@@ -1,4 +1,3 @@
-````markdown
 # Cosplay Costume Rental Management System
 
 ## Overview
@@ -123,12 +122,12 @@ This project is developed as part of a **Database Management Systems** course an
 
 The system provides the following reports:
 
-* Costume Utilization Report
-* Revenue Report (Daily, Weekly, Monthly)
-* Customer Rental History
-* Most Popular Characters/Themes
-* Late Return and Penalty Report
-* Inventory Condition and Maintenance Report
+- Costume Utilization Report
+- Revenue Report (Daily, Weekly, Monthly)
+- Customer Rental History
+- Most Popular Characters/Themes
+- Late Return and Penalty Report
+- Inventory Condition and Maintenance Report
 
 ---
 
@@ -139,6 +138,3 @@ Database Management Systems Course Project
 **Project Title:** Cosplay Costume Rental Management System
 
 **Database Platform:** Microsoft SQL Server
-
-```
-```
