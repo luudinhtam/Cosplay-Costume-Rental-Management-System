@@ -1,6 +1,6 @@
 
 
---BASIC QUERIES
+--BASIC QUERIES--
 --1: Retrieve each tables
 SELECT * from [USER]
 SELECT * FROM COSTUME
@@ -11,7 +11,7 @@ SELECT * FROM RENTAL_ORDER
 SELECT * FROM PAYMENT
 select * from PRICING_POLICY
 
---WHERE queries
+--WHERE queries--
 --2: Retrieves with condition
 SELECT *
 FROM [USER]
@@ -34,7 +34,7 @@ FROM PAYMENT
 WHERE status = 'success'
 
 
---ORDER BY queries
+--ORDER BY queries--
 --3 Order by 
 SELECT *
 FROM COSTUME
@@ -63,8 +63,7 @@ ORDER BY effectiveDate DESC
 
 
 
---AGGREGATE queries
-
+--AGGREGATE queries--
 --4: Count  
 SELECT COUNT(*) AS TotalUsers
 FROM [USER];
