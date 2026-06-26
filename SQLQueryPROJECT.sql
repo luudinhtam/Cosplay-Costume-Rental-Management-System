@@ -12,32 +12,26 @@ SELECT * FROM PAYMENT
 select * from PRICING_POLICY
 
 --WHERE queries
---6: Active users 
+--2: Retrieves with condition
 SELECT *
 FROM [USER]
 WHERE status = 'active'
 
---7: Customers only 
 SELECT *
 FROM [USER]
 WHERE role = 'customer'
 
-
---8: Available costume items 
 SELECT *
 FROM COSTUME_ITEM
 WHERE status = 'available'
 
---9: Orders currently active 
 SELECT *
 FROM RENTAL_ORDER
 WHERE status = 'active'
 
---10: Successful payments 
 SELECT *
 FROM PAYMENT
 WHERE status = 'success'
-
 
 
 --ORDER BY queries
