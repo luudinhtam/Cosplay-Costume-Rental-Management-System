@@ -35,31 +35,27 @@ WHERE status = 'success'
 
 
 --ORDER BY queries
---11: Costumes sorted by daily rate (high to low) 
+--3 Order by 
 SELECT *
 FROM COSTUME
 ORDER BY dailyRate DESC
 --Display costumes from highest rental fee to lowest.
 
---12: Users sorted by full name 
 SELECT *
 FROM [USER]
 ORDER BY fullName ASC
 --Sort users alphabetically.
 
---13: Rental orders sorted by order date 
 SELECT *
 FROM RENTAL_ORDER
 ORDER BY orderDate DESC
 --Show newest orders first. 
 
---14: Payments sorted by amount 
 SELECT *
 FROM PAYMENT
 ORDER BY amount DESC
 --Display highest payments first. 
 
---15: Pricing policies sorted by effective date 
 SELECT *
 FROM PRICING_POLICY
 ORDER BY effectiveDate DESC
@@ -69,28 +65,27 @@ ORDER BY effectiveDate DESC
 
 --AGGREGATE queries
 
---16: Count total users 
+--4: Count  
 SELECT COUNT(*) AS TotalUsers
 FROM [USER];
 --Count all registered users. 
-
---17: Count available costume items 
+ 
 SELECT COUNT(*) AS AvailableItems
 FROM COSTUME_ITEM
 WHERE status = 'available'
 --Count rentable costume items. 
 
---18: Average costume rental price
+--5: calculate Average
 SELECT AVG(dailyRate) AS AverageDailyRate
 FROM COSTUME
 --Calculate average rental price per day. 
 
---19: Maximum payment amount 
+--6: find Maximum 
 SELECT MAX(amount) AS HighestPayment
 FROM PAYMENT;
 --Find the highest payment. 
 
---20: Total revenue 
+--7: Calculate total 
 SELECT SUM(amount) AS TotalRevenue
 FROM PAYMENT
 WHERE status = 'success'
@@ -99,7 +94,7 @@ WHERE status = 'success'
 
 
 --QUERIES CONTAIN SUBQUERIES
---21: Costumes with rental price above average
+--8: Costumes with rental price above average
 SELECT *
 FROM COSTUME
 WHERE dailyRate >
@@ -108,7 +103,7 @@ WHERE dailyRate >
    FROM COSTUME
 );
 
---22: Customers who have placed orders
+--9: Customers who have placed orders
 SELECT *
 FROM [USER]
 WHERE userId IN
@@ -118,7 +113,7 @@ WHERE userId IN
 );
 
 
---23: Customers who never rented
+--10: Customers who never rented
 SELECT *
 FROM [USER]
 WHERE role = 'customer' and userId NOT IN 
@@ -127,7 +122,7 @@ WHERE role = 'customer' and userId NOT IN
    FROM RENTAL_ORDER
 );
 
---24: Orders with highest total fee
+--11: Orders with highest total fee
 SELECT *
 FROM RENTAL_ORDER
 WHERE totalFee =
@@ -136,7 +131,7 @@ WHERE totalFee =
    FROM RENTAL_ORDER
 );
 
---25: Payments larger than average payment
+--12: Payments larger than average payment
 SELECT *
 FROM PAYMENT
 WHERE amount >
@@ -145,7 +140,7 @@ WHERE amount >
    FROM PAYMENT
 );
 
---26: Most expensive costume
+--13: Most expensive costume
 SELECT *
 FROM COSTUME
 WHERE dailyRate =
@@ -154,7 +149,7 @@ WHERE dailyRate =
    FROM COSTUME
 );
 
---27: Orders using newest policy
+--14: Orders using newest policy
 SELECT *
 FROM RENTAL_ORDER
 WHERE policyId =
@@ -164,7 +159,7 @@ WHERE policyId =
    ORDER BY effectiveDate DESC
 );
 
---28: Available items belonging to expensive costumes
+--15: Available items belonging to expensive costumes
 SELECT *
 FROM COSTUME_ITEM
 WHERE costumeId IN
@@ -174,7 +169,7 @@ WHERE costumeId IN
    WHERE dailyRate > 500000
 );
 
---29: Payments for active orders
+--16: Payments for active orders
 SELECT *
 FROM PAYMENT
 WHERE orderId IN
@@ -184,7 +179,7 @@ WHERE orderId IN
    WHERE status = 'active'
 );
 
---30: Orders with total fee above average
+--17: Orders with total fee above average
 SELECT *
 FROM RENTAL_ORDER
 WHERE totalFee >
@@ -195,7 +190,7 @@ WHERE totalFee >
 
 
 --ADVANCED QUERIES
---31: Customers with orders having total fee above average
+--18: Customers with orders having total fee above average
 SELECT 
     u.userId,
     u.fullName AS username,
@@ -208,7 +203,7 @@ WHERE ro.totalFee >
     FROM RENTAL_ORDER
 );
 
---32: Costumes rented in the most expensive order
+--19: Costumes rented in the most expensive order
 SELECT *
 FROM COSTUME
 WHERE costumeId IN
@@ -227,7 +222,7 @@ WHERE costumeId IN
        )
    )
 );
---33: Payments related to orders with highest fee
+--20: Payments related to orders with highest fee
 SELECT *
 FROM PAYMENT
 WHERE orderId IN
@@ -241,7 +236,7 @@ WHERE orderId IN
    )
 );
 
---34: Policies used by above-average orders
+--21: Policies used by above-average orders
 SELECT *
 FROM PRICING_POLICY
 WHERE policyId IN
