@@ -8,7 +8,7 @@ SELECT *
 FROM [USER]
 WHERE email = 'tamld@fpt.edu.vn';
 
-
+DROP INDEX IX_USER_Email ON [USER]
 
 -- Creat IX_RENTAL_ORDER_Customer_Status
 CREATE NONCLUSTERED INDEX IX_RENTAL_ORDER_customerId_Active
@@ -37,3 +37,4 @@ FROM PAYMENT
 WHERE status = 'success'
 GROUP BY paymentMethod;
 
+DROP INDEX IX_PAYMENT_paymentMethod_status ON PAYMENT
