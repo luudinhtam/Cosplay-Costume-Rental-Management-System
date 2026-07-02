@@ -34,6 +34,6 @@ INCLUDE (amount);
 -- Test
 SELECT paymentMethod, SUM(amount) AS Revenue
 FROM PAYMENT
-WHERE status = 'paid'
+WHERE status = 'success'
 GROUP BY paymentMethod;
 
