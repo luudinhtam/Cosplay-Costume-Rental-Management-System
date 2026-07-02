@@ -64,6 +64,11 @@ INSERT INTO COSTUME_IMAGE (costumeId, imageUrl, thumbnail) VALUES
 (6, 'https://storage.cosplay.com/jiyan_armor.jpg', 1),
 (7, 'https://storage.cosplay.com/luffy_wano.jpg', 1);
 
+(8, 'https://storage.cosplay.com/ahri_starguardian_front.jpg', 1),
+(8, 'https://storage.cosplay.com/ahri_starguardian_back.jpg', 0),
+(9, 'https://storage.cosplay.com/ichigo_shinigami.jpg', 1),
+(10, 'https://storage.cosplay.com/goku_turtle.jpg', 1);
+
 -- 6. NHẬP DỮ LIỆU BẢNG RENTAL_ORDER (Đơn hàng tổng quát)
 -- Khách thuê (customerId): 4 -> 10. Nhân viên duyệt (staffId): 2 hoặc 3. Chính sách (policyId): 1 -> 4.
 INSERT INTO RENTAL_ORDER (customerId, staffId, policyId, status, orderDate, startDate, endDate, actualReturnDate, lateFeePerDay, totalFee) VALUES
