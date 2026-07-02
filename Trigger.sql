@@ -1,3 +1,4 @@
+--1 This trigger prevents deleting costume items that are referenced in rental history
 CREATE TRIGGER trg_PreventDeleteCostumeItem
 ON COSTUME_ITEM
 INSTEAD OF DELETE
@@ -27,6 +28,7 @@ BEGIN
 END;
 GO
 
+--2 This trigger automatically updates the costume item status after it is rented
 CREATE TRIGGER trg_UpdateItemStatusAfterRent
 ON ORDER_ITEM
 AFTER INSERT
@@ -44,6 +46,7 @@ BEGIN
 END;
 GO
 
+--3 This trigger restores costume availability after the rental process is completed
 CREATE TRIGGER trg_ReturnCostumeItem
 ON RENTAL_ORDER
 AFTER UPDATE
@@ -66,6 +69,7 @@ BEGIN
 END;
 GO
 
+--4 This trigger blocks invalid payment records with negative amounts
 CREATE TRIGGER trg_CheckMaxActiveRentals
 ON RENTAL_ORDER
 AFTER INSERT
@@ -92,54 +96,3 @@ BEGIN
 END;
 GO
 
-CREATE TRIGGER trg_PreventRentMaintenanceItem
-ON ORDER_ITEM
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    IF EXISTS
-    (
-        SELECT 1
-        FROM inserted i
-        INNER JOIN COSTUME_ITEM ci
-            ON i.itemId = ci.itemId
-        WHERE ci.status = 'maintenance'
-    )
-    BEGIN
-        RAISERROR('Costume item is under maintenance and cannot be rented.',16,1);
-        ROLLBACK TRANSACTION;
-    END
-END;
-GO
-
-CREATE TRIGGER trg_PreventDoubleBooking
-ON ORDER_ITEM
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    IF EXISTS
-    (
-        SELECT 1
-        FROM inserted i
-        INNER JOIN RENTAL_ORDER newOrder
-            ON i.orderId = newOrder.orderId
-        INNER JOIN ORDER_ITEM oi
-            ON oi.itemId = i.itemId
-        INNER JOIN RENTAL_ORDER oldOrder
-            ON oi.orderId = oldOrder.orderId
-        WHERE
-            newOrder.orderId <> oldOrder.orderId
-            AND oldOrder.status IN ('Pending','Active')
-            AND newOrder.startDate <= oldOrder.endDate
-            AND newOrder.endDate >= oldOrder.startDate
-    )
-    BEGIN
-        RAISERROR('This costume item has already been booked for the selected period.',16,1);
-        ROLLBACK TRANSACTION;
-    END
-END;
-GO
