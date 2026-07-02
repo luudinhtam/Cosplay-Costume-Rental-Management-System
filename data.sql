@@ -4,7 +4,7 @@ INSERT INTO [USER] (fullName, email, phone, password, role, address, status) VAL
 (N'Hoàng Ngọc Bảo', 'baohn@gmail.com', '0922334455', 'hashed_pass9', 'customer', N'Quận 8, TP. HCM', 'inactive'),
 (N'Đinh Văn Mạnh', 'manhdv@fpt.edu.vn', '0933445566', 'password123', 'staff', N'Quận 10, TP. HCM', 'inactive'),
 (N'Trịnh Cẩm Ly', 'lytc@gmail.com', '0944556677', 'hashed_pass10', 'customer', N'Quận 12, TP. HCM', 'inactive'),
-(N'Ngô Tuấn Anh', 'anhnt@gmail.com', '0955667788', 'hashed_pass11', 'customer', N'Quận 5, TP. HCM', 'inactive');
+(N'Ngô Tuấn Anh', 'anhnt@gmail.com', '0955667788', 'hashed_pass11', 'customer', N'Quận 5, TP. HCM', 'inactive'),
 (N'Nguyễn Trọng Phúc', 'phucnt@fpt.edu.vn', '0912345678', 'password123', 'admin', N'Thủ Đức, TP. HCM', 'active'),
 (N'Lưu Đình Tâm', 'tamld@fpt.edu.vn', '0923456789', 'password123', 'staff', N'Quận 9, TP. HCM', 'active'),
 (N'Cao Quốc Việt', 'vietcq@fpt.edu.vn', '0934567890', 'password123', 'staff', N'Bình Thạnh, TP. HCM', 'active'),
