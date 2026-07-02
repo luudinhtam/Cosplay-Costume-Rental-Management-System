@@ -25,7 +25,7 @@ BEGIN
     (
         @CustomerID,
         @PolicyID,
-        'Pending', -- Đã đồng bộ chữ P viết hoa
+        'Pending', 
         GETDATE(),
         @StartDate,
         @EndDate,
@@ -72,7 +72,7 @@ AS
 BEGIN
     SELECT
         COUNT(*) AS TotalPayments,
-        ISNULL(SUM(amount), 0) AS TotalRevenue -- Thêm bẫy lỗi NULL
+        ISNULL(SUM(amount), 0) AS TotalRevenue 
     FROM PAYMENT
     WHERE status = 'success';
 END;
