@@ -1,5 +1,4 @@
---1: Count: Create a new rental order.
-
+--1: Create a new rental order.
 CREATE PROCEDURE sp_CreateRentalOrder
 (
     @CustomerID INT,
@@ -26,7 +25,7 @@ BEGIN
     (
         @CustomerID,
         @PolicyID,
-        'pending',
+        'Pending', -- Đã đồng bộ chữ P viết hoa
         GETDATE(),
         @StartDate,
         @EndDate,
@@ -38,7 +37,6 @@ GO
 
 
 --2: Assign a staff member to process an order
-
 CREATE PROCEDURE sp_AssignStaffToOrder
 (
     @OrderID INT,
@@ -54,7 +52,6 @@ GO
 
 
 --3: Update the status of a rental order.
-
 CREATE PROCEDURE sp_UpdateOrderStatus
 (
     @OrderID INT,
@@ -70,13 +67,12 @@ GO
 
 
 --4: Calculate total revenue from successful payments.
-
 CREATE PROCEDURE sp_GenerateRevenueReport
 AS
 BEGIN
     SELECT
         COUNT(*) AS TotalPayments,
-        SUM(amount) AS TotalRevenue
+        ISNULL(SUM(amount), 0) AS TotalRevenue -- Thêm bẫy lỗi NULL
     FROM PAYMENT
     WHERE status = 'success';
 END;
