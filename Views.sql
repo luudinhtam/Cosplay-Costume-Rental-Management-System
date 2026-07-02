@@ -61,7 +61,7 @@ JOIN [USER] u
 -- Test
 SELECT *
 FROM vw_PaymentSummary
-WHERE status = 'paid'
+WHERE status = 'success'
 
 -- Drop
 DROP VIEW IF EXISTS vw_PaymentSummary
