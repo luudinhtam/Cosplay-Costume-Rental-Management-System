@@ -28,7 +28,7 @@ INSERT INTO PRICING_POLICY (policyName, lateFeeRate, maxActiveRentals, effective
 INSERT INTO COSTUME (name, characterName, theme, dailyRate, baseDeposit) VALUES
 (N'Trang phục Vệ Binh Tinh Tú', N'Ahri', N'League of Legends', 160000.00, 550000.00),
 (N'Đồng phục Tử Thần', N'Kurosaki Ichigo', N'Bleach', 140000.00, 450000.00),
-(N'Võ phục trường Quy Lão', N'Son Goku', N'Dragon Ball', 110000.00, 350000.00);
+(N'Võ phục trường Quy Lão', N'Son Goku', N'Dragon Ball', 110000.00, 350000.00),
 (N'Trang phục Kimono Genshin Impact', N'Kamisato Ayaka', N'Genshin Impact', 150000.00, 500000.00),
 (N'Đồng phục Học viện Jujutsu', N'Gojo Satoru', N'Jujutsu Kaisen', 120000.00, 400000.00),
 (N'Giáp Hokage Đệ Tứ', N'Namikaze Minato', N'Naruto', 200000.00, 700000.00),
