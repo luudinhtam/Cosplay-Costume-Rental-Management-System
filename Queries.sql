@@ -196,13 +196,3 @@ SELECT * FROM PAYMENT
 WHERE amount > ALL (SELECT totalFee FROM RENTAL_ORDER);
 
 
--- SET OPERATION QUERIES
--- 35: All customers and staff names
-SELECT fullName FROM [USER] WHERE role = 'customer'
-UNION
-SELECT fullName FROM [USER] WHERE role = 'staff';
-
--- 36: Users who are customer or admin
-SELECT userId FROM [USER] WHERE role = 'customer'
-UNION
-SELECT userId FROM [USER] WHERE role = 'admin';
