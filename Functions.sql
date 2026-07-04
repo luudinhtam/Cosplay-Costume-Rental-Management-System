@@ -97,4 +97,4 @@ GO
 
 --Test fn_CountActiveRentals (Đếm đơn đang thuê của khách)
 -- Truyền ID của một khách hàng (ví dụ ID = 4) -> Kết quả: Đếm số đơn 'Active' của khách số 4
-SELECT dbo.fn_CountActiveRentals(4) AS Test_ActiveRentals_Cus4;
+SELECT dbo.fn_CountActiveRentals(4) AS Test_ActiveRentals_Cus4
