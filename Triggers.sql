@@ -112,7 +112,7 @@ SELECT * FROM COSTUME_ITEM WHERE itemId = 8; -- item id = 8 của đơn số 6 s
 ROLLBACK
 
 
---4 
+--4 Giới hạn số đơn rental order cho 1 khách hàng là 3 đơn. Nếu > 3 sẽ báo lỗi và không thêm đơn hàng đó.
 GO
 CREATE TRIGGER trg_CheckMaxActiveRentals
 ON RENTAL_ORDER
