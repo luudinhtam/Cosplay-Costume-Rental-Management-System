@@ -141,6 +141,26 @@ END;
 GO
 
 -- Test and Check
+-- customerId 9, insert thêm active order thứ 3 (tổng 3, chưa vượt)
 
+INSERT INTO RENTAL_ORDER (customerId, staffId, policyId, status, orderDate, startDate, endDate, actualReturnDate, lateFeePerDay, totalFee)
+VALUES (9, 2, 1, 'Active', GETDATE(), '2026-07-10', '2026-07-12', NULL, 50000, 300000);
+-- Mong muốn: OK, tổng active = 3 (chưa > 3)
+
+-- customerId 9, insert active order thứ 4 -> PHẢI bị chặn
+
+BEGIN TRY
+    INSERT INTO RENTAL_ORDER (customerId, staffId, policyId, status, orderDate, startDate, endDate, actualReturnDate, lateFeePerDay, totalFee)
+    VALUES (9, 2, 1, 'Active', GETDATE(), '2026-07-10', '2026-07-12', NULL, 50000, 300000);
+    PRINT 'FAIL - không có lỗi nào được ném ra';
+END TRY
+BEGIN CATCH
+    PRINT ERROR_MESSAGE();
+END CATCH;
+
+SELECT COUNT(*) AS ActiveCount FROM RENTAL_ORDER WHERE customerId = 9 AND status = 'Active';
+-- Mong muốn: vẫn = 3, KHÔNG tăng lên 4 (vì ROLLBACK trong trigger đã hủy đúng statement insert thứ 4)
+
+SELECT * FROM RENTAL_ORDER;
 
 
